@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+{% block content %}
+<article>
+  <h2>Szczegóły: {{ r.kraj }}</h2>
+  <ul>
+    <li><strong>Wynik szczęścia:</strong> {{ r.wynik_szczescia|plfloat }}</li>
+    <li><strong>PKB na osobę (tys. USD, orientacyjnie):</strong> {{ r.pkb_na_osobe|plfloat }}</li>
+    <li><strong>Zdrowe życie (lata):</strong> {{ r.zdrowe_zycie|plfloat }}</li>
+  </ul>
+  <p><a href="{{ url_for('ranking') }}">← Wróć do rankingu</a></p>
+</article>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+  <h2>Ranking krajów</h2>
+
+  <form method="get" class="formularz">
+    <label>Filtr kraj: <input type="text" name="kraj" value="{{ filtr_kraj }}"></label>
+    <label>Min. wynik: <input type="number" step="0.1" name="min_wynik" value="{{ min_wynik or '' }}"></label>
+    <label>Sortuj wg:
+      <select name="sortuj">
+        <option value="wynik_szczescia" {% if sortuj=='wynik_szczescia' %}selected{% endif %}>Wynik szczęścia</option>
+        <option value="pkb_na_osobe" {% if sortuj=='pkb_na_osobe' %}selected{% endif %}>PKB na osobę</option>
+        <option value="zdrowe_zycie" {% if sortuj=='zdrowe_zycie' %}selected{% endif %}>Zdrowe życie</option>
+      </select>
+    </label>
+    <label>Kierunek:
+      <select name="kierunek">
+        <option value="malejaco" {% if kierunek!='rosnaco' %}selected{% endif %}>malejąco</option>
+        <option value="rosnaco" {% if kierunek=='rosnaco' %}selected{% endif %}>rosnąco</option>
+      </select>
+    </label>
+    <button type="submit">Zastosuj</button>
+  </form>
+
+  {% if filtr_kraj or min_wynik %}
+  <div class="pasek-info">
+    <span>Aktywne filtry:</span>
+    {% if filtr_kraj %}<span class="badge">kraj zawiera: „{{ filtr_kraj }}”</span>{% endif %}
+    {% if min_wynik %}<span class="badge">min. wynik: {{ min_wynik }}</span>{% endif %}
+    <a class="reset" href="{{ url_for('ranking') }}">Wyczyść</a>
+  </div>
+  {% endif %}
+
+  <p class="hint">Wskazówka: kliknij nagłówek kolumny, aby szybko zmienić sortowanie (przełącza rosnąco/malejąco).</p>
+
+  {% set toggled = 'rosnaco' if kierunek != 'rosnaco' else 'malejaco' %}
+  <table>
+    <thead>
+      <tr>
+        <th>Kraj</th>
+        <th>
+          <a href="{{ url_for('ranking', sortuj='wynik_szczescia', kierunek=toggled, kraj=filtr_kraj, min_wynik=min_wynik) }}">
+            Wynik (0–10)
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('ranking', sortuj='pkb_na_osobe', kierunek=toggled, kraj=filtr_kraj, min_wynik=min_wynik) }}">
+            PKB/os. (tys. USD)
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('ranking', sortuj='zdrowe_zycie', kierunek=toggled, kraj=filtr_kraj, min_wynik=min_wynik) }}">
+            Zdrowe życie (lata)
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in dane %}
+      <tr>
+        <td><a href="{{ url_for('kraj', nazwa=r.kraj) }}">{{ r.kraj }}</a></td>
+        <td>{{ r.wynik_szczescia|plfloat }}</td>
+        <td>{{ r.pkb_na_osobe|plfloat }}</td>
+        <td>{{ r.zdrowe_zycie|plfloat }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="toolbar">
+    <a class="btn" href="{{ url_for('export', sortuj=sortuj, kierunek=kierunek, kraj=filtr_kraj, min_wynik=min_wynik) }}">Pobierz jako CSV (obecny widok)</a>
+    <a class="link" href="{{ url_for('pomoc') }}">Jak czytać te dane?</a>
+  </div>
+</section>
+{% endblock %}

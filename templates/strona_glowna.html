@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+  <h2>Top 10: najszczęśliwsze kraje</h2>
+  <table>
+    <thead>
+      <tr><th>Kraj</th><th>Wynik (0–10)</th><th>PKB/os. (tys. USD)</th><th>Zdrowe życie (lata)</th></tr>
+    </thead>
+    <tbody>
+    {% for r in top10 %}
+      <tr>
+        <td><a href="{{ url_for('kraj', nazwa=r.kraj) }}">{{ r.kraj }}</a></td>
+        <td>{{ r.wynik_szczescia|plfloat }}</td>
+        <td>{{ r.pkb_na_osobe|plfloat }}</td>
+        <td>{{ r.zdrowe_zycie|plfloat }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p class="mini-info">Jak czytać: „Wynik” – skala 0–10; „PKB/os.” – tysiące USD na mieszkańca; „Zdrowe życie” – lata życia w zdrowiu.</p>
+  <p><a class="btn" href="{{ url_for('ranking') }}">Zobacz cały ranking</a></p>
+</section>
+{% endblock %}

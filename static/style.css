@@ -1,0 +1,31 @@
+
+* { box-sizing: border-box; }
+body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; background:#f7f7fb; color:#222; }
+header { background:#ffffff; border-bottom:1px solid #eee; padding:16px; position: sticky; top:0; }
+h1 { margin:0; font-size: 22px; }
+nav a { margin-right: 12px; text-decoration: none; color:#0a58ca; }
+main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+table { width:100%; border-collapse: collapse; background:#fff; border:1px solid #eee; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align:left; }
+tr:nth-child(even) { background:#fafafa; }
+footer { text-align:center; color:#777; font-size: 14px; padding: 24px; }
+.btn { display:inline-block; padding:10px 14px; background:#0a58ca; color:#fff; border-radius:8px; }
+.formularz { display:flex; gap:12px; flex-wrap: wrap; align-items: end; margin-bottom: 12px; }
+.formularz input, .formularz select { padding:8px; }
+.kolumny { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+
+.mini-info { color:#555; font-size: 14px; margin: 8px 0 0; }
+
+.pasek-info { background:#fff; border:1px solid #eee; padding:10px 12px; margin:12px 0; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.badge { background:#eef3ff; color:#0a58ca; padding:4px 8px; border-radius:999px; font-size:13px; }
+.reset { margin-left:auto; color:#b00020; text-decoration:none; }
+.toolbar { display:flex; gap:12px; align-items:center; margin-top:12px; }
+.link { color:#0a58ca; text-decoration:none; }
+.hint { color:#666; font-size: 13px; margin: 6px 0 10px; }
+
+/* Logo + nagłówek */
+header { display: flex; align-items: center; gap: 16px; }
+header nav { margin-left: auto; display: flex; gap: 12px; }
+.logo-title { display: flex; align-items: center; gap: 10px; }
+.logo { width: 32px; height: 32px; display: block; }
+.logo-link { display: inline-flex; }

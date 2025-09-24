@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="uśmiechnięta buźka">
+  <circle cx="32" cy="32" r="28" fill="#FFD54F" stroke="#333" stroke-width="2"/>
+  <circle cx="23" cy="26" r="3.5" fill="#333"/>
+  <circle cx="41" cy="26" r="3.5" fill="#333"/>
+  <path d="M20 40c3.5 5 9 8 12 8s8.5-3 12-8" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+</svg>

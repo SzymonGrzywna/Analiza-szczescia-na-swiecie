@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+  <h2>Nie znaleziono</h2>
+  <p>{{ opis or "Strona, której szukasz, nie istnieje." }}</p>
+  <p><a class="btn" href="{{ url_for('ranking') }}">Wróć do rankingu</a></p>
+</section>
+{% endblock %}

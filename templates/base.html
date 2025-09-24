@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analiza szczęścia na świecie</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+  <div class="logo-title">
+    <a href="{{ url_for('strona_glowna') }}" class="logo-link" aria-label="Strona główna">
+      <img src="{{ url_for('static', filename='logo.svg') }}" alt="uśmiechnięta buźka – logo" class="logo">
+    </a>
+    <h1>Analiza szczęścia na świecie</h1>
+  </div>
+  <nav>
+    <a href="{{ url_for('strona_glowna') }}">Start</a>
+    <a href="{{ url_for('ranking') }}">Ranking</a>
+    <a href="{{ url_for('analiza') }}">Analiza</a>
+  </nav>
+</header>
+<main>
+  {% block content %}{% endblock %}
+</main>
+<footer></footer>
+</body>
+</html>

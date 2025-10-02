@@ -6,7 +6,7 @@ app = Flask(__name__)
 SCIEZKA_BAZY = "baza/dane.db"
 SCIEZKA_CSV  = "dane/dane_szczescie.csv"
 
-# --- Baza danych ---
+# -
 
 def polacz():
     os.makedirs(os.path.dirname(SCIEZKA_BAZY), exist_ok=True)

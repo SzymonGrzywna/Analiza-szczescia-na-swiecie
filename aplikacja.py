@@ -121,7 +121,6 @@ def fetch_kraj(nazwa):
     con.close()
     return dict(r) if r else None
 
-# --- Filtry / pomoc ---
 
 @app.template_filter("plfloat")
 def plfloat_wyswietl(v):
@@ -130,7 +129,7 @@ def plfloat_wyswietl(v):
     except Exception:
         return str(v)
 
-# --- Trasy ---
+
 
 @app.route("/")
 def strona_glowna():
@@ -159,7 +158,7 @@ def kraj(nazwa):
 
 @app.route("/analiza")
 def analiza():
-    # w tym projekcie /analiza to mem + żart (plik szablonu już to ma)
+
     return render_template("analiza.html")
 
 @app.route("/pomoc")

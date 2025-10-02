@@ -8,3 +8,8 @@ __pycache__/
 .vscode/
 .idea/
 instance/
+baza/
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
